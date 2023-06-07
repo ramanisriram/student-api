@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: student-api-service
+  labels:
+    run: student-api
+spec:
+  ports:
+  - port: {{ .Values.service.port }}
+    protocol: {{ .Values.service.protocol | default "TCP" }}
+  selector:
+    app: student-api-selector
+  type: {{ .Values.service.type }}

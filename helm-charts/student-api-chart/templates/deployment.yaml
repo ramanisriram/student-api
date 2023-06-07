@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: student-api
+  name: student-api-deploy
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: student-api-selector
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: student-api-selector
+    spec:
+      containers:
+        - image: "{{ .Values.image.repository }}"
+          name: {{ .Chart.Name }}
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: dev

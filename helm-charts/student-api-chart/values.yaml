@@ -1,0 +1,16 @@
+# Default values for student-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: docker.io/sriram1113/student-api
+
+service:
+  type : NodePort
+  port: 8080
+  protocol: TCP
+
+env:
+  name: dev
